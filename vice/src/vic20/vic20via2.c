@@ -148,10 +148,14 @@ static void store_pra(via_context_t *via_context, uint8_t byte, uint8_t myoldpa,
     joy_bits = ((byte & 0x20) >> 1) | ((byte & 0x1c) >> 2);
     store_joyport_dig(JOYPORT_1, joy_bits, 0x17);
 
+<<<<<<< HEAD
     tapeport_set_sense_out(TAPEPORT_PORT_1, byte & 0x40 ? 1 : 0);
 
     userport_pa6 = byte & 0x40 ? 1 : 0;
     update_portbits();  /* HACK: see above */
+=======
+    tapeport_set_sense_out(TAPEPORT_PORT_1, (byte & 0x40) ? 1 : 0);
+>>>>>>> bbd3bd58 (Add files via upload)
 }
 
 static void undump_prb(via_context_t *via_context, uint8_t byte)

@@ -513,6 +513,37 @@ static void set_chargen_mode(mps_t *mps, unsigned int secondary, unsigned int m)
 #endif
 
 /* ------------------------------------------------------------------------- */
+<<<<<<< HEAD
+=======
+/* MPS803 printer engine. */
+
+static void set_mode(mps_t *mps, unsigned int m)
+{
+    mps->mode |= m;
+}
+
+static void del_mode(mps_t *mps, unsigned int m)
+{
+    mps->mode &= ~m;
+}
+
+static int is_mode(mps_t *mps, unsigned int m)
+{
+    return mps->mode & m;
+}
+
+static int get_charset_bit(mps_t *mps, int nr, unsigned int col,
+                           unsigned int row)
+{
+    int reverse, result;
+
+    reverse = is_mode(mps, MPS_REVERSE);
+
+    result = (charset[nr][row] & (1 << (7 - col))) ? !reverse : reverse;
+
+    return result;
+}
+>>>>>>> bbd3bd58 (Add files via upload)
 
 static void print_cbm_char(mps_t *mps, const uint8_t rawchar)
 {
@@ -641,9 +672,15 @@ static void print_bitmask(mps_t *mps, unsigned int prnr, const char c)
             write_line(mps, prnr);
             clear_buffer(mps);
         }
+<<<<<<< HEAD
         for (y = 0; y < mps->char_height; y++) {
             mps->line[mps->pos][y] = c & (1 << (y)) ? 1 : 0;
         }
+=======
+    for (y = 0; y < 7; y++) {
+        mps->line[mps->pos][y] = (c & (1 << (y))) ? 1 : 0;
+    }
+>>>>>>> bbd3bd58 (Add files via upload)
 
         mps->pos++;
     }
