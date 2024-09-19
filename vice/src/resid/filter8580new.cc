@@ -270,7 +270,7 @@ Filter::Filter()
       double vmin = fi.opamp_voltage[0][0];
       double opamp_max = fi.opamp_voltage[0][1];
       double kVddt = fi.k*(fi.Vdd - fi.Vth);
-      double vmax = kVddt < opamp_max ? opamp_max : kVddt;
+      double vmax = (kVddt < opamp_max) ? opamp_max : kVddt;
       double denorm = vmax - vmin;
       double norm = 1.0/denorm;
 
@@ -348,7 +348,7 @@ Filter::Filter()
         int df = f - fp;  // Scaled by 2^15
 
         // 16 bits unsigned: m*2^16*(fn - xmin)
-        opamp[j].vx = f > (0xffff << 15) ? 0xffff : f >> 15;
+        opamp[j].vx = (f > (0xffff << 15)) ? 0xffff : f >> 15;
         // 16 bits (15 bits + sign bit): 2^11*dfn
         opamp[j].dvx = df >> (15 - 11);
       }
@@ -390,7 +390,11 @@ Filter::Filter()
       //
       // All "on", transistors are modeled as one - see comments above for
       // the filter summer.
+<<<<<<< HEAD
       double divider = m==0 ? 6. : 5.;
+=======
+      int divider = (m==0) ? 6 : 5;
+>>>>>>> bbd3bd58 (Add files via upload)
       offset = 0;
       size = 1;  // Only one lookup element for 0 input "resistors".
       for (int l = 0; l < 8; l++) {
@@ -415,7 +419,11 @@ Filter::Filter()
       // From die photographs of the volume "resistor" ladders
       // it follows that gain ~ vol/12 (6581) vol/16 (8580)
       // (assuming ideal op-amps and ideal "resistors").
+<<<<<<< HEAD
       divider = m==0 ? 12. : 16.;
+=======
+      divider = (m==0) ? 12 : 16;
+>>>>>>> bbd3bd58 (Add files via upload)
       for (int n8 = 0; n8 < 16; n8++) {
         double n = double(n8) / divider;
         int x = mf.ak;
