@@ -694,13 +694,8 @@ static int set_volume(int val, void *param)
         volume = 0;
     }
 
-<<<<<<< HEAD
     if (volume > MASTER_VOLUME_MAX) {
         volume = MASTER_VOLUME_MAX;
-=======
-    if (volume > 200) {
-        volume = 200;
->>>>>>> bbd3bd58 (Add files via upload)
     }
 
     amp = (int)((exp((double)volume / ((double)MASTER_VOLUME_ONE) * log(2.0)) - 1.0) * 4096.0);
