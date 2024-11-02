@@ -8824,15 +8824,11 @@ void retro_run(void)
    {
       sound_volume_counter--;
       if (sound_volume_counter == 0)
-<<<<<<< HEAD
 #if defined(__XPLUS4__)
-         resources_set_int("SoundVolume", 50);
+         resources_set_int("SoundVolume", sound_master_volume/2);
 #else
-         resources_set_int("SoundVolume", 100);
-#endif
-=======
          resources_set_int("SoundVolume", sound_master_volume);
->>>>>>> bbd3bd58 (Add files via upload)
+#endif
    }
 
    /* Video output */
