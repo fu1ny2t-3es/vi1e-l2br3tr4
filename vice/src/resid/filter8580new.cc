@@ -390,11 +390,7 @@ Filter::Filter()
       //
       // All "on", transistors are modeled as one - see comments above for
       // the filter summer.
-<<<<<<< HEAD
-      double divider = m==0 ? 6. : 5.;
-=======
-      int divider = (m==0) ? 6 : 5;
->>>>>>> bbd3bd58 (Add files via upload)
+      double divider = (m==0) ? 6. : 5.;
       offset = 0;
       size = 1;  // Only one lookup element for 0 input "resistors".
       for (int l = 0; l < 8; l++) {
@@ -419,11 +415,7 @@ Filter::Filter()
       // From die photographs of the volume "resistor" ladders
       // it follows that gain ~ vol/12 (6581) vol/16 (8580)
       // (assuming ideal op-amps and ideal "resistors").
-<<<<<<< HEAD
-      divider = m==0 ? 12. : 16.;
-=======
-      divider = (m==0) ? 12 : 16;
->>>>>>> bbd3bd58 (Add files via upload)
+      divider = (m==0) ? 12. : 16.;
       for (int n8 = 0; n8 < 16; n8++) {
         double n = double(n8) / divider;
         int x = mf.ak;
