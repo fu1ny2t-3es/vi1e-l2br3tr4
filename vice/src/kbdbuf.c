@@ -238,7 +238,7 @@ int kbdbuf_is_empty(void)
 /* Return nonzero if there are keys in the buffer queue */
 int kbdbuf_queue_is_empty(void)
 {
-    return num_pending > 0 ? 0 : 1;
+    return (num_pending > 0) ? 0 : 1;
 }
 
 /* Feed `string' into the incoming queue.  */
