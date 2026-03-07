@@ -1578,9 +1578,15 @@ static int resource_item_isdefault(int num)
             break;
         case RES_STRING:
             v = *resources[num].value_ptr;
+<<<<<<< HEAD
             s1 = v == NULL ? "" : v;
             s2 = resources[num].factory_value == NULL ? "" : resources[num].factory_value;
             if (strcmp(s1, s2) == 0) {
+=======
+            s1 = ((char *)v == NULL) ? "" : (char *)v;
+            s2 = ((char *)resources[num].factory_value == NULL) ? "" : (char *)resources[num].factory_value;
+            if (!strcmp(s1, s2)) {
+>>>>>>> 9fbb7e16 (Update a.yml)
                 return 1;
             }
             DBG(("%s = (string) default: \"%s\" is: \"%s\"", resources[num].name, s2, s1));
